@@ -12,7 +12,7 @@ export default function InterviewerList(props) {
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={interviewer.id === props.interviewer}
-        setInterviewer={set => props.setInterviewer(interviewer.id)}
+        setInterviewer={(event) => props.setInterviewer(interviewer.id)}
       />
     );
   });
