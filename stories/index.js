@@ -179,6 +179,7 @@ storiesOf("Button", module)
         interviewers = {interviewers}
         onSave={action("onSave")}
         onCancel={action("onCancel")}
+        onChange ={action("setInterviewer")}
         />
       ))
       .add("Create", () => (
