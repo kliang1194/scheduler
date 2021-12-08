@@ -65,9 +65,7 @@ const appointmentArray = Object.values(appointments).map((appointment) => {
   return (
     <Appointment
     key = {appointment.id}
-    time = {appointment.time}
-    interview = {appointment.interview}  />
-
+    {...appointment} />
   )
 })
 
