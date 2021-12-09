@@ -54,8 +54,14 @@ const appointmentArray = Object.values(appointments).map((appointment) => {
 })
 
 export default function Application(props) {
-  const [days, setDays] = useState([]); 
-  const [day, setDay] = useState('Monday');
+ const [state, setState] = useState({
+   day: "Monday",
+   days: [],
+   appointments: {}
+ });
+
+ const setDay = day => setState({ ...state, day });
+ const setDays = days => setState(prev => ({...prev, days}));
 
   useEffect(() => {
     const daysURL = '/api/days';
@@ -75,8 +81,8 @@ export default function Application(props) {
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
   <DayList
-  days={days}
-  value={day}
+  days={state.days}
+  value={state.day}
   onChange={setDay}
 />
 </nav>
