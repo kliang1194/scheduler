@@ -40,6 +40,15 @@ export default function Application(props) {
   })
 }
 
+function cancelInterview(id) {
+  axios.delete(`/api/appointments/${id}`)
+  .then(() => {
+    setState({
+      ...state
+    });
+  })
+}
+
  const appointmentArray = dailyAppointments.map((appointment) => {
    const interview = getInterview(state, appointment.interview);
   const interviewersForDay = getInterviewersForDay(state, state.day);
@@ -51,6 +60,7 @@ export default function Application(props) {
     interview={interview}
     interviewers={interviewersForDay}
     bookInterview = {bookInterview}
+    cancelInterview = {cancelInterview}
     />
   );
 });

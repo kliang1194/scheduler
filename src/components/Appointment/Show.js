@@ -19,7 +19,7 @@ export default function Show (props) {
         alt="Edit"
       />
       <img
-      onClick={props.onDelete}
+      onClick={() => props.onDelete(props.interview)}
         className="appointment__actions-button"
         src="images/trash.png"
         alt="Delete"
