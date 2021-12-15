@@ -7,19 +7,15 @@ A user can select between different days and create new appointments for intervi
 ## Screenshots
 
 **Full view of Scheduler Application**
-
 !["Full view of Scheduler Application"](https://github.com/kliang1194/scheduler/blob/master/docs/Full-View.gif)
 
 **Create a new appointment for an interview**
-
 !["Create a new appointment for an interview"](https://github.com/kliang1194/scheduler/blob/master/docs/Create-Appointment.gif)
 
 **Edit an existing interview appointment**
-
 !["Edit an existing interview appointment"](https://github.com/kliang1194/scheduler/blob/master/docs/Edit-Appointment.gif)
 
 **Delete an existing interview appointment**
-
 !["Delete an existing interview appointment"](https://github.com/kliang1194/scheduler/blob/master/docs/Delete-Appointment.gif)
 
 ## Setup
