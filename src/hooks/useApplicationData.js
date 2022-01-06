@@ -9,6 +9,9 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
+  //Included spots as a state so that the page will upadte when the number of spots remaining changes//
+  const [spots, setSpots] = useState(5);
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -22,18 +25,17 @@ export default function useApplicationData() {
         interviewers: response[2].data,
       }));
     });
-  }, []);
+  }, [spots]);
 
   const setDay = (day) => setState({ ...state, day });
 
+  //Updates the number of interveiw spots remaining per day after appointments are created/deleted. This function requires a page refresh to update.//
   function updateSpotsRemaining() {
-    let spotsRemaining = 5;
-
     for (let day in state.days) {
       if (state.days[day].name === state.day) {
         for (let id of state.days[day].appointments) {
           if (state.appointments[id].interview !== null) {
-            spotsRemaining--;
+            setSpots(spots - 1);
           }
         }
       }
@@ -44,7 +46,7 @@ export default function useApplicationData() {
       } else {
         return {
           ...day,
-          spots: spotsRemaining,
+          spots: spots,
         };
       }
     });

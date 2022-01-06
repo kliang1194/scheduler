@@ -40,20 +40,26 @@ export default function Appointment(props) {
       interviewer,
     };
 
-    props
-      .bookInterview(props.id, interview)
-      .then(() => {
-        transition(SHOW);
-      })
-      .catch(() => {
-        transition(ERROR_SAVE, true);
-      });
+    //Return error if an interviewer is not selected when creating an appointment.//
+    if (!interview.interviewer) {
+      transition(ERROR_SAVE, true);
+    } else {
+      props
+        .bookInterview(props.id, interview)
+        .then(() => {
+          transition(SHOW);
+        })
+        .catch(() => {
+          transition(ERROR_SAVE, true);
+        });
+    }
   };
 
   const deleteInterview = (interview) => {
     interview = null;
     transition(CONFIRM);
   };
+
   const destroy = () => {
     transition(DELETING, true);
     props
