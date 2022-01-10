@@ -19,6 +19,7 @@ export default function Appointment(props) {
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  const MISSING_INTERVIEWER = "MISSING_INTERVIEWER";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -42,7 +43,7 @@ export default function Appointment(props) {
 
     //Return error if an interviewer is not selected when creating an appointment.//
     if (!interview.interviewer) {
-      transition(ERROR_SAVE, true);
+      transition(MISSING_INTERVIEWER, true);
     } else {
       props
         .bookInterview(props.id, interview)
@@ -107,6 +108,12 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => transition(SHOW)}
           onSave={save}
+        />
+      )}
+      {mode === MISSING_INTERVIEWER && (
+        <Error
+          message="Unable to Save. Please select an interviewer."
+          onClose={() => back()}
         />
       )}
       {mode === ERROR_SAVE && (
