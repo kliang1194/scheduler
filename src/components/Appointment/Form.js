@@ -17,7 +17,7 @@ export default function Form(props) {
     props.onCancel();
   };
 
-  //Validates if student name has been entered when creating an appointment. Throws an error if the student name has not been entered.//
+  //Validates if student name and interviewer have been entered/selected when creating an appointment. Throws an error if the student name has not been entered or an interviewer has not been selected.//
   const validate = () => {
     if (student === "" && interviewer == null) {
       setError("Please enter a student name and select an interviewer.");
