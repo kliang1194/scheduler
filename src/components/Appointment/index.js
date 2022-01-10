@@ -41,19 +41,14 @@ export default function Appointment(props) {
       interviewer,
     };
 
-    //Return error if an interviewer is not selected when creating an appointment.//
-    if (!interview.interviewer) {
-      transition(MISSING_INTERVIEWER, true);
-    } else {
-      props
-        .bookInterview(props.id, interview)
-        .then(() => {
-          transition(SHOW);
-        })
-        .catch(() => {
-          transition(ERROR_SAVE, true);
-        });
-    }
+    props
+      .bookInterview(props.id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch(() => {
+        transition(ERROR_SAVE, true);
+      });
   };
 
   const deleteInterview = (interview) => {
@@ -110,12 +105,7 @@ export default function Appointment(props) {
           onSave={save}
         />
       )}
-      {mode === MISSING_INTERVIEWER && (
-        <Error
-          message="Unable to Save. Please select an interviewer."
-          onClose={() => back()}
-        />
-      )}
+
       {mode === ERROR_SAVE && (
         <Error message="Unable to Save" onClose={() => back()} />
       )}

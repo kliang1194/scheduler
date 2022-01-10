@@ -19,8 +19,14 @@ export default function Form(props) {
 
   //Validates if student name has been entered when creating an appointment. Throws an error if the student name has not been entered.//
   const validate = () => {
-    if (student === "") {
-      setError("Please ensure that a student name is entered.");
+    if (student === "" && interviewer == null) {
+      setError("Please enter a student name and select an interviewer.");
+      return;
+    } else if (!(student === "") && interviewer === null) {
+      setError("Please select an interviewer.");
+      return;
+    } else if (student === "" && !(interviewer === null)) {
+      setError("Please enter a student name.");
       return;
     }
     setError("");
